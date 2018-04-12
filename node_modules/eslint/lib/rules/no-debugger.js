@@ -5,6 +5,8 @@
 
 "use strict";
 
+const astUtils = require("../ast-utils");
+
 //------------------------------------------------------------------------------
 // Rule Definition
 //------------------------------------------------------------------------------
@@ -16,15 +18,24 @@ module.exports = {
             category: "Possible Errors",
             recommended: true
         },
-
+        fixable: "code",
         schema: []
     },
 
-    create: function(context) {
+    create(context) {
 
         return {
-            DebuggerStatement: function(node) {
-                context.report(node, "Unexpected 'debugger' statement.");
+            DebuggerStatement(node) {
+                context.report({
+                    node,
+                    message: "Unexpected 'debugger' statement.",
+                    fix(fixer) {
+                        if (astUtils.STATEMENT_LIST_PARENTS.has(node.parent.type)) {
+                            return fixer.remove(node);
+                        }
+                        return null;
+                    }
+                });
             }
         };
 
