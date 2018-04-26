@@ -11,6 +11,17 @@
 
 
 
+
+
 ### 기술
 
-React
+React, Redux
+
+
+
+### API
+
+Cryptocompare API : <https://www.cryptocompare.com/api/> 
+
+
+
