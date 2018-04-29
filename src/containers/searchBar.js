@@ -8,31 +8,33 @@ class SearchBar extends Component {
     super(props);
 
     this.state = {
-    loading: false,
-    error: '',
-    term: '' 
+      loading: false,
+      error: '',
+      term: '' 
     };
   }
   onSubmit(event){
     event.preventDefault();
-    this.props.fetchCoin(this.state.term);
+    // this.props.fetchCoin(this.state.term);
+    this.props.fetchCoin();
     this.setState({term: ''});
   }
   render(){
     const clsName = (this.props.loading) ? 'btn btn-primary loading' : 'btn btn-primary';
     return (
-      <form className="search-bar" onSubmit ={event => this.onSubmit(event)}>
+      <form className="search-bar mt-3 ml-3 mr-3" onSubmit ={event => this.onSubmit(event)}>
         <div className="input-group mb-3">
           <input 
             onChange={event => this.setState({term: event.target.value})}
             type='text'
             value = {this.state.term}
-            className="form-control mr-sm-2" placeholder="Enter the Coin Name" 
+            className="form-control" placeholder="Enter the Coin Name" 
             aria-label="Search"/>
-        </div>
-        <div className="input-group-append">
-          <button className={clsName} type="submit">Search
-          </button>
+        
+          <div className="input-group-append">
+            <button className={clsName} type="button">Search
+            </button>
+          </div>
         </div>
       </form>
     );
@@ -41,8 +43,8 @@ class SearchBar extends Component {
 }
 function mapStateToProps(state){
   return{
-    loading: state.Data.loading,
-    error: state.Data.error
+    loading: state.coin.loading,
+    error: state.coin.error
   };
 }
 function mapDispatchToProps(dispatch){
