@@ -2,33 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCoin } from '../actions/index';
 import { bindActionCreators } from 'redux';
-class coinList extends Component {
+import { Link } from 'react-router-dom';
+
+class CoinList extends Component {
   constructor(props){
     super(props);
     this.state = {
       loading: false,
-      currencies: ['BTC','ETH','LTC','XRP','XMR','QTUM','IOT','DASH'],
+      counter:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
       error: null,
     };
+    
   }
-
-  // renderCoin({DISPLAY,RAW}){
-  //   return(
-  //     <tr key = {DISPLAY.ETH.USD.LASTMARKET}>
-  //       <td>{RAW.ETH.USD.FROMSYMBOL}</td>
-  //       <td>{DISPLAY.ETH.USD.TOTALVOLUME24H}</td>
-  //       <td>{DISPLAY.ETH.USD.PRICE}</td>
-  //       <td>{DISPLAY.ETH.USD.CHANGEPCTDAY}</td>
-  //       <td>{DISPLAY.ETH.USD.HIGHDAY}</td>
-  //       <td>{DISPLAY.ETH.USD.LOWDAY}</td>
-  //     </tr>
-
-  //   );
-  // }
 
   componentDidMount(){
-    this.props.fetchCoin(this.state.currencies);
+    this.props.fetchCoin();
   }
+
 
   handleError(){
     if (this.props.error){
@@ -46,52 +36,50 @@ class coinList extends Component {
     return(
       <div className="coin-list mt-3">
         { this.handleError() }
+        <h2 className="coin-list-header mt-3 mb-3">USD Market</h2>
         <table className="table table-hover">
           <thead>
             <tr>
-              <th>코인 이름</th>
-              <th>시가총액</th>
-              <th>USD 시세</th>
-              <th>변동률</th>
-              <th>최고가</th>
-              <th>최저가</th>
+              <th>logo</th>
+              <th>coin</th>
+              <th>USD price</th>
+              <th>시간당 변동률</th>
+              <th>하루 변동률</th>
+              <th>상세</th>
             </tr>
           </thead>
           <tbody>
-            {/* {this.props.coin.map(this.renderCoin)} */}
-            { this.props.coin.map((item,i) => {
-              // var index = this.state.currencies[i]
-              return (
-                this.state.currencies.map((coins,i)=>{
+            {this.props.coin.map((item) => {
+              return(
+                this.state.counter.map((i) => { //고치기
                   return(
                     <tr key={i}>
-                      <td>{item.RAW[coins].USD.FROMSYMBOL}</td>
-                      <td>{item.DISPLAY[coins].USD.TOTALVOLUME24H}</td>
-                      <td>{item.DISPLAY[coins].USD.PRICE}</td>
-                      <td>{item.DISPLAY[coins].USD.CHANGEPCTDAY}</td>
-                      <td>{item.DISPLAY[coins].USD.HIGHDAY}</td>
-                      <td>{item.DISPLAY[coins].USD.LOWDAY}</td>
+                      <td><img className="coin-logo" src={`https://chasing-coins.com/api/v1/std/logo/${item[i].symbol}`}/></td>
+                      <td>{item[i].symbol}</td>
+                      <td>$ {item[i].price}</td>
+                      <td>{item[i].change.hour}%</td>
+                      <td>{item[i].change.day}%</td>
+                      <td><Link to={`/${item[i].symbol}`}><button type="button" className="btn btn-info">Info</button></Link></td>
                     </tr>
                   );
-                  
                 })
-                
-              )
-                
-              })}
+              );
+            })}
           </tbody>
         </table>
       </div>
     );
   }
 }
+//container component -> presentation component 
 function mapStateToProps(state) {
   return {
     coin: state.coin.data,
     error: state.coin.error
   };
 }
+//presentation component -> container component
 function mapDispatchToProps(dispatch){
   return bindActionCreators({ fetchCoin }, dispatch);
 }
-export default connect(mapStateToProps, mapDispatchToProps)(coinList);
+export default connect(mapStateToProps, mapDispatchToProps)(CoinList);

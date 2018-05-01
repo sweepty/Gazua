@@ -26,3 +26,16 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.coin-logo {
+  width: 2.2em;
+}
+
+tr th {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+tr td {
+  font-size: 1.1em;
+}
+/* @import "./node_modules/react-vis/dist/style"; */
