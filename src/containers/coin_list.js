@@ -12,19 +12,19 @@ class coinList extends Component {
     };
   }
 
-  renderCoin({DISPLAY,RAW}){
-    return(
-      <tr key = {DISPLAY.ETH.USD.LASTMARKET}>
-        <td>{RAW.ETH.USD.FROMSYMBOL}</td>
-        <td>{DISPLAY.ETH.USD.TOTALVOLUME24H}</td>
-        <td>{DISPLAY.ETH.USD.PRICE}</td>
-        <td>{DISPLAY.ETH.USD.CHANGEPCTDAY}</td>
-        <td>{DISPLAY.ETH.USD.HIGHDAY}</td>
-        <td>{DISPLAY.ETH.USD.LOWDAY}</td>
-      </tr>
+  // renderCoin({DISPLAY,RAW}){
+  //   return(
+  //     <tr key = {DISPLAY.ETH.USD.LASTMARKET}>
+  //       <td>{RAW.ETH.USD.FROMSYMBOL}</td>
+  //       <td>{DISPLAY.ETH.USD.TOTALVOLUME24H}</td>
+  //       <td>{DISPLAY.ETH.USD.PRICE}</td>
+  //       <td>{DISPLAY.ETH.USD.CHANGEPCTDAY}</td>
+  //       <td>{DISPLAY.ETH.USD.HIGHDAY}</td>
+  //       <td>{DISPLAY.ETH.USD.LOWDAY}</td>
+  //     </tr>
 
-    );
-  }
+  //   );
+  // }
 
   componentDidMount(){
     this.props.fetchCoin(this.state.currencies);
@@ -58,7 +58,27 @@ class coinList extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.coin.map(this.renderCoin)}
+            {/* {this.props.coin.map(this.renderCoin)} */}
+            { this.props.coin.map((item,i) => {
+              // var index = this.state.currencies[i]
+              return (
+                this.state.currencies.map((coins,i)=>{
+                  return(
+                    <tr key={i}>
+                      <td>{item.RAW[coins].USD.FROMSYMBOL}</td>
+                      <td>{item.DISPLAY[coins].USD.TOTALVOLUME24H}</td>
+                      <td>{item.DISPLAY[coins].USD.PRICE}</td>
+                      <td>{item.DISPLAY[coins].USD.CHANGEPCTDAY}</td>
+                      <td>{item.DISPLAY[coins].USD.HIGHDAY}</td>
+                      <td>{item.DISPLAY[coins].USD.LOWDAY}</td>
+                    </tr>
+                  );
+                  
+                })
+                
+              )
+                
+              })}
           </tbody>
         </table>
       </div>
