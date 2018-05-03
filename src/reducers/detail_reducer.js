@@ -1,25 +1,27 @@
-import { FETCH_COIN } from '../actions';
+import { FETCH_DETAIL } from '../actions';
 
 export default function(state = {
   loading: false,
   error: '',
   data: [] },action) {
     
+  console.log(action);
   switch(action.type){
-  case `${FETCH_COIN}_PENDING`:
+  case `${FETCH_DETAIL}_PENDING`:
     return {
       loading: true,
       error: '',
       data: [...state.data]
     };
-  case `${FETCH_COIN}_FULFILLED`:
+  case `${FETCH_DETAIL}_FULFILLED`:
+    
     return {
       loading: false,
       error: '',
-      data: action.payload.data
+      data: action.payload.data.Data
       // data: [action.payload.data,...state.data]
     };
-  case `${FETCH_COIN}_REJECTED`:
+  case `${FETCH_DETAIL}_REJECTED`:
     return {
       loading: false,
       error: action.payload,

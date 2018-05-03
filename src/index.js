@@ -11,6 +11,7 @@ import App from './App';
 import reducers from './reducers';
 
 import registerServiceWorker from './registerServiceWorker';
+
 const composeStoreWithMiddleware = applyMiddleware(
   promiseMiddleware()
 )(createStore);

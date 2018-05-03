@@ -1,4 +1,4 @@
-import { FETCH_COIN } from '../actions';
+import { FETCH_NEWS } from '../actions';
 
 export default function(state = {
   loading: false,
@@ -6,20 +6,19 @@ export default function(state = {
   data: [] },action) {
     
   switch(action.type){
-  case `${FETCH_COIN}_PENDING`:
+  case `${FETCH_NEWS}_PENDING`:
     return {
       loading: true,
       error: '',
       data: [...state.data]
     };
-  case `${FETCH_COIN}_FULFILLED`:
+  case `${FETCH_NEWS}_FULFILLED`:
     return {
       loading: false,
       error: '',
-      data: action.payload.data
-      // data: [action.payload.data,...state.data]
+      data: [action.payload.data,...state.data]
     };
-  case `${FETCH_COIN}_REJECTED`:
+  case `${FETCH_NEWS}_REJECTED`:
     return {
       loading: false,
       error: action.payload,

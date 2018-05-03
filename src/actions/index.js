@@ -17,9 +17,10 @@ export function fetchCoin(){
 }
 
 export function fetchDetail(coinName){
-  const url_detail = `${ROOT_URL}histominute?fsym=${coinName}&tsym=USD&limit=30`;
+  const url_detail = `${ROOT_URL}histoday?fsym=${coinName}&tsym=USD&limit=200`;
   const request = axios.get(url_detail);
-
+  console.log("In FetchDetail", request);
+  
   return {
     type: FETCH_DETAIL,
     payload: request
@@ -27,7 +28,7 @@ export function fetchDetail(coinName){
 }
 
 export function fetchNews(){
-  const url_news = `${ROOT_URL}v2/news/?lang=EN`;
+  const url_news = `${ROOT_URL}v2/news/?lang=EN`;//latest news articles
   const request = axios.get(url_news);
 
   return {

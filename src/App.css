@@ -38,4 +38,7 @@ tr th {
 tr td {
   font-size: 1.1em;
 }
+.coin-detail-logo {
+  width: 5em;
+}
 /* @import "./node_modules/react-vis/dist/style"; */
