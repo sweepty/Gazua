@@ -8,6 +8,7 @@ import CoinDetail from './containers/coin_detail';
 import SearchBar from './containers/searchBar';
 import CoinNews from './containers/coin_news';
 
+
 class App extends Component {
   render() {
     return (

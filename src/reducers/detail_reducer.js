@@ -4,8 +4,7 @@ export default function(state = {
   loading: false,
   error: '',
   data: [] },action) {
-    
-  console.log(action);
+  
   switch(action.type){
   case `${FETCH_DETAIL}_PENDING`:
     return {
@@ -19,7 +18,6 @@ export default function(state = {
       loading: false,
       error: '',
       data: action.payload.data.Data
-      // data: [action.payload.data,...state.data]
     };
   case `${FETCH_DETAIL}_REJECTED`:
     return {

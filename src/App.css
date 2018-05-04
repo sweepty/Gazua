@@ -41,4 +41,8 @@ tr td {
 .coin-detail-logo {
   width: 5em;
 }
-/* @import "./node_modules/react-vis/dist/style"; */
+
+.card {
+  /* width: 18em; */
+  margin: 3em, 3em, 3em, 3em;
+}

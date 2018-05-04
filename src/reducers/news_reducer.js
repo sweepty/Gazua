@@ -16,7 +16,7 @@ export default function(state = {
     return {
       loading: false,
       error: '',
-      data: [action.payload.data,...state.data]
+      data: action.payload.data.Data
     };
   case `${FETCH_NEWS}_REJECTED`:
     return {

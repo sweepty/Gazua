@@ -48,17 +48,17 @@ class CoinList extends Component {
             </tr>
           </thead>
           <tbody>
-          {_.map(this.props.coin, (item,index) => (
-            <tr key={index}>
-              <td>{index}</td>
-              <td><img className="coin-logo" src={`https://chasing-coins.com/api/v1/std/logo/${item.symbol}`}/></td>
-              <td>{item.symbol}</td>
-              <td>${item.price}</td>
-              <td>{item.change.hour}%</td>
-              <td>{item.change.day}%</td>
-              <td><Link to={`/${item.symbol}`}><button type="button" className="btn btn-info">Info</button></Link></td>
-          </tr>
-          ))}
+            {_.map(this.props.coin, (item,index) => (
+              <tr key={index}>
+                <td>{index}</td>
+                <td><img className="coin-logo" src={`https://chasing-coins.com/api/v1/std/logo/${item.symbol}`}/></td>
+                <td>{item.symbol}</td>
+                <td>${item.price}</td>
+                <td>{item.change.hour}%</td>
+                <td>{item.change.day}%</td>
+                <td><Link to={`/${item.symbol}`}><button type="button" className="btn btn-info">Info</button></Link></td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

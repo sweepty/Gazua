@@ -17,7 +17,6 @@ export default function(state = {
       loading: false,
       error: '',
       data: action.payload.data
-      // data: [action.payload.data,...state.data]
     };
   case `${FETCH_COIN}_REJECTED`:
     return {

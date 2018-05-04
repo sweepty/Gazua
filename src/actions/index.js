@@ -16,11 +16,11 @@ export function fetchCoin(){
   };
 }
 
-export function fetchDetail(coinName){
-  const url_detail = `${ROOT_URL}histoday?fsym=${coinName}&tsym=USD&limit=200`;
+export function fetchDetail(){//coinName
+  // const url_detail = `${ROOT_URL}histoday?fsym=${coinName}&tsym=USD&limit=30`;
+  const url_detail = `${ROOT_URL}histoday?fsym=BTC&tsym=USD&limit=30`;
   const request = axios.get(url_detail);
-  console.log("In FetchDetail", request);
-  
+  // console.log("In FetchDetail", request);
   return {
     type: FETCH_DETAIL,
     payload: request

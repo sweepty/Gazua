@@ -25,7 +25,7 @@ Cryptocompare API : <https://www.cryptocompare.com/api/>
 
 
 
-### ERROR
+### Allow-Control-Allow-Origin:* 
 
 ```
 Failed to load https://chasing-coins.com/api/v1/top-coins/20: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:3000' is therefore not allowed access.
@@ -33,7 +33,9 @@ Failed to load https://chasing-coins.com/api/v1/top-coins/20: No 'Access-Control
 
 위와 같은 에러 발생 시
 
-**Allow-Control-Allow-Origin: * 설치**
+
+
+Chrome 확장자 도구  **Allow-Control-Allow-Origin: * 설치**
 
 https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
 
