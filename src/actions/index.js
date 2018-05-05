@@ -4,6 +4,7 @@ const ROOT_URL = 'https://min-api.cryptocompare.com/data/';
 
 export const FETCH_COIN = 'FETCH_COIN';
 export const FETCH_DETAIL = 'FETCH_DETAIL';
+export const PRIOD_SELECTED = 'PRIOD_SELECTED';
 export const FETCH_NEWS = 'FETCH_NEWS';
 
 export function fetchCoin(){
@@ -16,15 +17,23 @@ export function fetchCoin(){
   };
 }
 
-export function fetchDetail(){//coinName
-  // const url_detail = `${ROOT_URL}histoday?fsym=${coinName}&tsym=USD&limit=30`;
-  const url_detail = `${ROOT_URL}histoday?fsym=BTC&tsym=USD&limit=30`;
+export function fetchDetail(coinName, priod){//coinName
+  const url_detail = `${ROOT_URL}histo${priod}?fsym=${coinName}&tsym=USD&limit=30`;
+  // const url_detail = `${ROOT_URL}histoday?fsym=BTC&tsym=USD&limit=30`;
   const request = axios.get(url_detail);
   // console.log("In FetchDetail", request);
   return {
     type: FETCH_DETAIL,
     payload: request
   };
+}
+
+export function selectedPriod(ddhhmm){
+  return{
+    type: 'PRIOD_SELECTED',
+    payload: ddhhmm
+  };
+  console.log(ddhhmm, "period 확인");
 }
 
 export function fetchNews(){

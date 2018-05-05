@@ -13,12 +13,12 @@ export default function(state = {
       data: [...state.data]
     };
   case `${FETCH_DETAIL}_FULFILLED`:
-    
     return {
       loading: false,
       error: '',
       data: action.payload.data.Data
     };
+
   case `${FETCH_DETAIL}_REJECTED`:
     return {
       loading: false,
