@@ -26,9 +26,9 @@ class CoinNews extends Component {
               <div className="card"> 
                 <img className="card-img-top" src={item.imageurl} alt="news image"/>
                 <div className="card-body" >
-                  <h5 className="card-title">{item.title}</h5>
-                  <p className="card-text">{item.categories}</p>
-                  <a href={item.url} className="btn btn-primary" target="_blank">자세히 보기</a>
+                  <h4 className="card-title">{item.title}</h4>
+                  {/* <p className="card-text">{item.body.substr(0,100)}...</p> */}
+                  <a href={item.url} className="btn btn-primary" target="_blank">More</a>
                 </div>
               </div>
             </div>

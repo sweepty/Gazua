@@ -17,23 +17,13 @@ export function fetchCoin(){
   };
 }
 
-export function fetchDetail(coinName, priod){//coinName
-  const url_detail = `${ROOT_URL}histo${priod}?fsym=${coinName}&tsym=USD&limit=30`;
-  // const url_detail = `${ROOT_URL}histoday?fsym=BTC&tsym=USD&limit=30`;
+export function fetchDetail(coinName, market, priod, limit){//coinName
+  const url_detail = `${ROOT_URL}histo${priod}?fsym=${coinName}&tsym=${market}&limit=${limit}`;
   const request = axios.get(url_detail);
-  // console.log("In FetchDetail", request);
   return {
     type: FETCH_DETAIL,
     payload: request
   };
-}
-
-export function selectedPriod(ddhhmm){
-  return{
-    type: 'PRIOD_SELECTED',
-    payload: ddhhmm
-  };
-  console.log(ddhhmm, "period 확인");
 }
 
 export function fetchNews(){

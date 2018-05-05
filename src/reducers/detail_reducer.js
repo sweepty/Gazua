@@ -13,6 +13,7 @@ export default function(state = {
       data: [...state.data]
     };
   case `${FETCH_DETAIL}_FULFILLED`:
+    
     return {
       loading: false,
       error: '',

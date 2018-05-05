@@ -42,8 +42,10 @@ class CoinList extends Component {
               <th>logo</th>
               <th>coin</th>
               <th>USD price</th>
+              <th>Market cap</th>
               <th>1 hour</th>
               <th>day</th>
+              <th>coin heat</th>
               <th>Info</th>
             </tr>
           </thead>
@@ -54,9 +56,14 @@ class CoinList extends Component {
                 <td><img className="coin-logo" src={`https://chasing-coins.com/api/v1/std/logo/${item.symbol}`}/></td>
                 <td>{item.symbol}</td>
                 <td>${item.price}</td>
-                <td>{item.change.hour}%</td>
-                <td>{item.change.day}%</td>
-                <td><Link to={`/${item.symbol}`}><button type="button" className="btn btn-info">Info</button></Link></td>
+                <td>${item.cap}</td>
+                <td className={item.change.hour.startsWith('-') ? 'red' : 'blue'} >{item.change.hour}%</td>
+                <td className={item.change.day.startsWith('-') ? 'red' : 'blue'} >{item.change.day}%</td>
+                <td><div className="progress">
+                  <div className={item.coinheat > 50 ? 'progress-bar bg-warning' : 'progress-bar'} role="progressbar" style={{width: item.coinheat + '%'}} 
+                    aria-valuenow={item.coinheat} aria-valuemin="0" aria-valuemax="100"></div>
+                </div></td>
+                <td><Link to={`/${item.symbol}`} ><button type="button" className="btn btn-info">Info</button></Link></td>
               </tr>
             ))}
           </tbody>

@@ -27,7 +27,7 @@
   to { transform: rotate(360deg); }
 }
 .coin-logo {
-  width: 2.2em;
+  width: 3em;
 }
 .coin-detail-logo{
   width: 5em;
@@ -40,21 +40,36 @@ tr th {
 }
 
 tr td {
-  font-size: 1.1em;
+  font-size: 1.5em;
 }
 .coin-detail-logo {
   width: 5em;
 }
-
+.coin-info{
+  margin: auto;
+}
 .card {
   /* width: 18em; */
-  margin: 3em, 3em, 3em, 3em;
+  margin: 3em;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
 }
 
+#heatred {
+  color: red;
+}
 .btn-group {
   margin: 3em;
 }
-
+.chart {
+  margin: auto;
+  /* width: 30%; */
+  padding: 5em;
+}
 .react-vis-magic-css-import-rule {
   display: inherit;
 }
