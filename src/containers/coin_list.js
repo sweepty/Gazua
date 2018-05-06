@@ -16,6 +16,8 @@ class CoinList extends Component {
   }
   componentDidMount(){
     this.props.fetchCoin();
+    this.timer = setInterval(()=> 
+      this.props.fetchCoin(), 60000);
   }
   
   handleError(){
@@ -76,7 +78,7 @@ class CoinList extends Component {
 function mapStateToProps(state) {
   return {
     coin: state.coin.data,
-    error: state.coin.error
+    error: state.coin.error,
   };
 }
 //presentation component -> container component

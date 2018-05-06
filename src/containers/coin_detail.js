@@ -1,24 +1,29 @@
 import React from 'react';
 import _ from 'lodash';
-import { fetchDetail, selectedPriod } from '../actions/index';
+import { fetchDetail, getInfo, getNow } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Chart from './chart';
+import moment from 'moment';
 
 class CoinDetail extends React.Component {
   
   constructor(props){
     super(props);
     this.state = {
-      data: [],
       priod: 'day',
       limit: 30,
-      market: 'USD'
+      market: 'USD',
+      mark: '$',
     };
   }
   componentDidMount(){
+    // this.props.getNow(this.props.match.params.symbol, this.state.market);
+    this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit);
+    this.props.getInfo(this.props.match.params.symbol);
     this.timer = setInterval(()=> 
-      this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit), 1000)
+      this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit), 500000)
+      
   }
   setPriod = (e) => {
     this.setState({ priod: e.target.id },() => {
@@ -31,8 +36,19 @@ class CoinDetail extends React.Component {
       this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit);
     });
   }
-  setMarket= (e) => {
+  setMarket = (e) => {
     this.setState({ market: e.target.id },() => {
+      switch(this.state.market){
+        case 'USD':
+          this.setState({mark: '$'});
+          break;
+        case 'EUR':
+          this.setState({mark: '€'});
+          break;
+        case 'KRW':
+          this.setState({mark: '₩'});
+          break;
+      }
       this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit);
     });
   }
@@ -44,74 +60,122 @@ class CoinDetail extends React.Component {
       dd.push({
         x: pp.time*1000,
         y: (pp.open + pp.close) / 2,
-        // yHigh: pp.high,
-        // yOpen: pp.open,
-        // yClose: pp.close,
-        // Low: pp.low,
+        yHigh: pp.high,
+        yOpen: pp.open,
+        yClose: pp.close,
+        yLow: pp.low,
       });
       return dd;
     });
-
+    if(!this.props.detail || !this.props.info){
+      return null;
+    }
+    // console.log(this.props.price,"price있나요");
     return (
       <div className="coin-detail">
         <div className="coin-name-and-logo">
           <img className="coin-detail-logo" src={`https://chasing-coins.com/api/v1/std/logo/${symbol}`}/>
-          <h1>{symbol}</h1>
+          <h1>{symbol} - {this.props.info.FullName} </h1>
+          {/* <h2>현재가격: {this.props.price[this.state.market]}</h2> */}
+        </div>
+        <br/>
+        <br/>
+        <div>
+          <table className="table table-hover coin-detail-info-table">
+            <thead className="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>FullName</th>
+                <th>Symbol</th>
+                <th>Algorithm</th>
+                <th>ProofType</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{this.props.info.Id}</td>
+                <td>{this.props.info.FullName}</td>
+                <td>{this.props.info.Internal}</td>
+                <td>{this.props.info.Algorithm}</td>
+                <td>{this.props.info.ProofType}</td>
+              </tr>
+              
+            </tbody>
+          </table>
         </div>
         <div className="container-fluid">
           <div className="row">
             <div className="col-4">
               <h3>Set Priod</h3>
+              <h2 className="setview">{this.state.priod}</h2>
               <div className="btn-group period" role="group" aria-label="Choice priod">
                 <button type="button" id="minute" className="btn btn-secondary" onClick={this.setPriod}>MINUTE</button>
                 <button type="button" id ="hour"className="btn btn-secondary" onClick={this.setPriod} >HOUR</button>
                 <button type="button" id ="day" className="btn btn-secondary" onClick={this.setPriod}>DAY</button>
               </div>
+              
             </div>
             <div className="col-4">
               <h3>Set Limit</h3>
-                <div className="btn-group limit" role="group" aria-label="Choice limit">
-                  <button type="button" id ="30" className="btn btn-secondary" onClick={this.setLimit}>30</button>
-                  <button type="button" id ="100"className="btn btn-secondary" onClick={this.setLimit} >100</button>
-                  <button type="button" id="200" className="btn btn-secondary" onClick={this.setLimit}>200</button>
-                </div>
+              <h2 className="setview">{this.state.limit}</h2>
+              <div className="btn-group limit" role="group" aria-label="Choice limit">
+                <button type="button" id ="7" className="btn btn-secondary" onClick={this.setLimit}>7</button>
+                <button type="button" id ="10" className="btn btn-secondary" onClick={this.setLimit}>10</button>
+                <button type="button" id ="24" className="btn btn-secondary" onClick={this.setLimit}>24</button>
+                <button type="button" id ="30" className="btn btn-secondary" onClick={this.setLimit}>30</button>
+                <button type="button" id ="50" className="btn btn-secondary" onClick={this.setLimit}>60</button>
+                <button type="button" id ="100"className="btn btn-secondary" onClick={this.setLimit} >100</button>
+                <button type="button" id ="150"className="btn btn-secondary" onClick={this.setLimit} >150</button>
+                <button type="button" id="200" className="btn btn-secondary" onClick={this.setLimit}>200</button>
+              </div>
+              
             </div>
             <div className="col-4">
               <h3>Set Market</h3>
-                <div className="btn-group market" role="group" aria-label="Choice market">
-                  <button type="button" id ="USD" className="btn btn-secondary" onClick={this.setMarket}>USD</button>
-                  <button type="button" id ="EUR"className="btn btn-secondary" onClick={this.setMarket} >EUR</button>
-                  <button type="button" id="KRW" className="btn btn-secondary" onClick={this.setMarket}>KRW</button>
-                </div>
+              <h2 className="setview">{this.state.market}</h2>
+              <div className="btn-group market" role="group" aria-label="Choice market">
+                <button type="button" id ="USD" className="btn btn-secondary" onClick={this.setMarket}>USD</button>
+                <button type="button" id ="EUR"className="btn btn-secondary" onClick={this.setMarket} >EUR</button>
+                <button type="button" id="KRW" className="btn btn-secondary" onClick={this.setMarket}>KRW</button>
+              </div>
+              
             </div>
           </div>
         </div>
 
-        <h2>Latest {this.state.limit} {this.state.priod}s chart - {this.state.market}</h2>
+        <h1 id="clicked-result">Latest {this.state.limit} {this.state.priod}s chart - {this.state.market}</h1>
         <div className="container-fluid">
           <div className="row">
             <div className="col-12">
               <div className="chart">
-                <Chart value={dd}/>
+                <Chart value={dd} market={this.state.market}/>
               </div>
             </div>
             <div className="col-8 coin-info">
-              <ul className="nav nav-tabs" id="myTab" role="tablist">
-                <li className="nav-item">
-                  <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                </li>
-              </ul>
-              <div className="tab-content" id="myTabContent">
-                <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ</div>
-                <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">두번째</div>
-                <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">세번째</div>
-              </div>
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>time</th>
+                    <th>open</th>
+                    <th>close</th>
+                    <th>high</th>
+                    <th>low</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {_.map(this.props.detail, (item,index) => (
+                    <tr key={index+1}>
+                      <td>{index+1}</td>
+                      <td>{moment.unix(item.time).format("YYYY/MM/DD hh:mm")}</td>
+                      <td>{this.state.mark}{item.open}</td>
+                      <td>{this.state.mark}{item.close}</td>
+                      <td>{this.state.mark}{item.high}</td>
+                      <td>{this.state.mark}{item.low}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -121,13 +185,15 @@ class CoinDetail extends React.Component {
 }
 function mapStateToProps(state){
   return{
-    detail: state.details.data,
-    error: state.details.error,
+    detail: state.details.detail,
+    error: state.coin.error,
+    info: state.coin.info,
+    price: state.coin.price,
   };
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ fetchDetail }, dispatch);
+  return bindActionCreators({ fetchDetail, getInfo, getNow }, dispatch);
 }
 export default connect( mapStateToProps, mapDispatchToProps )(CoinDetail);
 

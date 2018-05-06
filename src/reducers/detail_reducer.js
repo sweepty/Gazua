@@ -3,29 +3,30 @@ import { FETCH_DETAIL } from '../actions';
 export default function(state = {
   loading: false,
   error: '',
-  data: [] },action) {
+  detail: [],
+},action) {
   
   switch(action.type){
   case `${FETCH_DETAIL}_PENDING`:
     return {
       loading: true,
       error: '',
-      data: [...state.data]
+      detail: [...state.detail]
     };
   case `${FETCH_DETAIL}_FULFILLED`:
-    
     return {
       loading: false,
       error: '',
-      data: action.payload.data.Data
+      detail: action.payload.data.Data,
     };
 
   case `${FETCH_DETAIL}_REJECTED`:
     return {
       loading: false,
       error: action.payload,
-      data: [...state.data]
+      detail: [...state.detail]
     };
+    
   default :
     return state;
   }

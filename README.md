@@ -21,9 +21,12 @@
 
 <br/>
 
-###Language & Framework
+### Language & Framework
 
-React, Redux
+- React
+- Redux
+- Bootstrap
+- React-vis
 
 <br/>
 
