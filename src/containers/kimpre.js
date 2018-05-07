@@ -14,7 +14,7 @@ class KimP extends Component {
     return(
       <div className="kimchi">
         <h1>코인 프리미엄</h1>
-        <p>한국 거래소와 외국 거래소의 가격 차이 조회.</p>
+        <p>속칭 김치프리미엄. 한국 거래소와 외국 거래소의 가격 차이 조회.</p>
         <br/>
         <h2>현재 환율: {this.props.exchange}</h2>
         <div className="container-fluid">
@@ -36,7 +36,7 @@ class KimP extends Component {
                         <td>{index}</td>
                         <td>${item.USD}</td>
                         <td>₩{item.KRW}</td>
-                        <td>{((item.KRW - (item.USD*1080))/ parseInt(item.USD*1080)*100)}%</td>
+                        <td className={ item.KRW - (item.USD*this.props.exchange) < 0 ? 'red':'blue' } >{((item.KRW - (item.USD*this.props.exchange))/ parseInt(item.USD*this.props.exchange)*100).toFixed(2)}%</td>
                       </tr>
                     ))}
                   </tbody>
