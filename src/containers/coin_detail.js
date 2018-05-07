@@ -20,7 +20,8 @@ class CoinDetail extends React.Component {
     this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit);
     this.props.getInfo(this.props.match.params.symbol);
     this.timer = setInterval(()=> 
-      this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit), 60000)
+    
+      this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit), 6000)
       
   }
   setPriod = (e) => {
