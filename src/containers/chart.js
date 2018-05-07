@@ -9,8 +9,8 @@ export default class Chart extends Component {
       
       <XYPlot
         xType="time"
-        width={1200}
-        height={700}
+        width={800}
+        height={500}
         onMouseLeave={this.onMouseLeave}>
         <HorizontalGridLines />
         <VerticalGridLines />

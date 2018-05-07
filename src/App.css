@@ -78,13 +78,15 @@ tr td {
   margin: auto;
 }
 .btn-group {
-  margin: 3em;
+  margin: 1em;
 }
 .chart {
   margin: auto;
-  width: 50%;
+  width: 100%;
 }
-
+.CustomBtn {
+  margin: auto;
+}
 h2 {
   margin: auto;
   width: 50%;

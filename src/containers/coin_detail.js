@@ -75,56 +75,51 @@ class CoinDetail extends React.Component {
       <div className="coin-detail">
         <div className="coin-name-and-logo">
           <img className="coin-detail-logo" src={`https://chasing-coins.com/api/v1/std/logo/${symbol}`}/>
-          <h1>{symbol} - {this.props.info.FullName} </h1>
+          <h2>{symbol} - {this.props.info.FullName} </h2>
         </div>
         <div className="container-fluid CustomBtn">
           <div className="row">
-            <div className="col-lg-4 col-sm-4 col-md-12">
-              <h3>Set Priod</h3>
-              <h2 className="setview">{this.state.priod}</h2>
-              <div className="btn-group period" role="group" aria-label="Choice priod">
-                <button type="button" id="minute" className="btn btn-secondary" onClick={this.setPriod}>MINUTE</button>
-                <button type="button" id ="hour"className="btn btn-secondary" onClick={this.setPriod} >HOUR</button>
-                <button type="button" id ="day" className="btn btn-secondary" onClick={this.setPriod}>DAY</button>
-              </div>
-              
-            </div>
-            <div className="col-lg-4 col-sm-4 col-md-12">
-              <h3>Set Limit</h3>
-              <h2 className="setview">{this.state.limit}</h2>
-              <div className="btn-group limit" role="group" aria-label="Choice limit">
-                <button type="button" id ="7" className="btn btn-secondary" onClick={this.setLimit}>7</button>
-                <button type="button" id ="24" className="btn btn-secondary" onClick={this.setLimit}>24</button>
-                <button type="button" id ="30" className="btn btn-secondary" onClick={this.setLimit}>30</button>
-                <button type="button" id ="60" className="btn btn-secondary" onClick={this.setLimit}>60</button>
-                <button type="button" id ="100"className="btn btn-secondary" onClick={this.setLimit} >100</button>
-                <button type="button" id ="150"className="btn btn-secondary" onClick={this.setLimit} >150</button>
-                <button type="button" id="200" className="btn btn-secondary" onClick={this.setLimit}>200</button>
-              </div>
-              
-            </div>
-            <div className="col-lg-4 col-sm-4 col-md-12">
-              <h3>Set Market</h3>
-              <h2 className="setview">{this.state.market}</h2>
-              <div className="btn-group market" role="group" aria-label="Choice market">
-                <button type="button" id ="USD" className="btn btn-secondary" onClick={this.setMarket}>USD</button>
-                <button type="button" id ="EUR"className="btn btn-secondary" onClick={this.setMarket} >EUR</button>
-                <button type="button" id="KRW" className="btn btn-secondary" onClick={this.setMarket}>KRW</button>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-
-        <h1 id="clicked-result">Latest {this.state.limit} {this.state.priod}s chart - {this.state.market} {this.state.mark}</h1>
-        <div className="container-fluid">
-          <div className="row">
             <div className="col-lg-12 col-md-12 col-sm-12">
               <div className="chart">
+                <h3 id="clicked-result">Latest {this.state.limit} {this.state.priod}s chart - {this.state.market} {this.state.mark}</h3>
                 <Chart value={dd} market={this.state.market}/>
               </div>
             </div>
-
+          <div className="col-lg-6 col-sm-6 col-md-6">
+            <h4>Set Priod</h4>
+            <h2 className="setview">{this.state.priod}</h2>
+            <div className="btn-group period" role="group" aria-label="Choice priod">
+              <button type="button" id="minute" className="btn btn-secondary" onClick={this.setPriod}>MINUTE</button>
+              <button type="button" id ="hour"className="btn btn-secondary" onClick={this.setPriod} >HOUR</button>
+              <button type="button" id ="day" className="btn btn-secondary" onClick={this.setPriod}>DAY</button>
+            </div> 
+          </div>
+          <div className="col-lg-6 col-sm-6 col-md-6">
+            <h4>Set Limit</h4>
+            <h2 className="setview">{this.state.limit}</h2>
+            <div className="btn-group limit" role="group" aria-label="Choice limit">
+              <button type="button" id ="7" className="btn btn-secondary" onClick={this.setLimit}>7</button>
+              <button type="button" id ="24" className="btn btn-secondary" onClick={this.setLimit}>24</button>
+              <button type="button" id ="30" className="btn btn-secondary" onClick={this.setLimit}>30</button>
+              <button type="button" id ="60" className="btn btn-secondary" onClick={this.setLimit}>60</button>
+              <button type="button" id ="100"className="btn btn-secondary" onClick={this.setLimit} >100</button>
+              <button type="button" id ="150"className="btn btn-secondary" onClick={this.setLimit} >150</button>
+              <button type="button" id="200" className="btn btn-secondary" onClick={this.setLimit}>200</button>
+            </div>
+          </div>
+          <div className="col-lg-6 col-sm-6 col-md-6">
+            <h4>Set Market</h4>
+            <h2 className="setview">{this.state.market}</h2>
+            <div className="btn-group market" role="group" aria-label="Choice market">
+              <button type="button" id ="USD" className="btn btn-secondary" onClick={this.setMarket}>USD</button>
+              <button type="button" id ="EUR"className="btn btn-secondary" onClick={this.setMarket} >EUR</button>
+              <button type="button" id="KRW" className="btn btn-secondary" onClick={this.setMarket}>KRW</button>
+            </div>
+              
+          </div>
+        </div>
+      </div>
+        <div className="container-fluid">
             <div className="col-lg-6 col-sm-12 col-md-12" id="coin-info">
               <h2>{this.props.info.FullName} Info</h2>
               <table className="table coin-detail-info-table">
@@ -195,7 +190,6 @@ class CoinDetail extends React.Component {
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }
