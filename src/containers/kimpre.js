@@ -36,7 +36,7 @@ class KimP extends Component {
                         <td>{index}</td>
                         <td>${item.USD}</td>
                         <td>₩{item.KRW}</td>
-                        <td>{(parseInt((item.KRW - (item.USD*1080))/ parseInt(item.USD*1080))*100,10)}%</td>
+                        <td>{((item.KRW - (item.USD*1080))/ parseInt(item.USD*1080)*100)}%</td>
                       </tr>
                     ))}
                   </tbody>
