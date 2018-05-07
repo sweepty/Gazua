@@ -1,9 +1,10 @@
-import { FETCH_DETAIL } from '../actions';
+import { FETCH_DETAIL, GET_NOW, EXCHANGE  } from '../actions';
 
 export default function(state = {
   loading: false,
   error: '',
   detail: [],
+  now:[],
 },action) {
   
   switch(action.type){
@@ -19,7 +20,12 @@ export default function(state = {
       error: '',
       detail: action.payload.data.Data,
     };
-
+  case `${GET_NOW}_FULFILLED`:
+    return {
+      loading: false,
+      error: '',
+      now: action.payload.data,
+    };
   case `${FETCH_DETAIL}_REJECTED`:
     return {
       loading: false,

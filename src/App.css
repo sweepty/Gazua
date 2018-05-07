@@ -45,13 +45,18 @@ tr td {
 .coin-detail-logo {
   width: 5em;
 }
-.coin-info{
+/* .coin-info{
   margin: auto;
-}
-.coin-detail-info-table {
+} */
+/* .coin-detail-info-table {
   margin: auto;
+  width: 40%;
+} */
+.CustomBtn{
+  margin: auto;
+  padding: 5em;
+  /* background-color: gray; */
   width: 70%;
-  
 }
 .card {
   /* width: 18em; */
@@ -77,6 +82,27 @@ tr td {
 }
 .chart {
   margin: auto;
-  /* width: 30%; */
-  padding: 5em;
+  width: 50%;
 }
+
+h2 {
+  margin: auto;
+  width: 50%;
+}
+
+h1 {
+  margin: auto;
+  width: 50%;
+  padding: 1.5em;
+}
+
+table {
+  margin: auto;
+  width: 50%;
+  /* padding: 1.5em; */
+}
+#coin-info {
+  margin: auto;
+  width: 50%;
+}
+

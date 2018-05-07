@@ -1,9 +1,11 @@
-import { FETCH_NEWS } from '../actions';
+import { FETCH_NEWS, EXCHANGE } from '../actions';
 
 export default function(state = {
   loading: false,
   error: '',
-  data: [] },action) {
+  data: [],
+  exchange: [],
+},action) {
     
   switch(action.type){
   case `${FETCH_NEWS}_PENDING`:
@@ -17,6 +19,12 @@ export default function(state = {
       loading: false,
       error: '',
       data: action.payload.data.Data
+    };
+  case `${EXCHANGE}_FULFILLED`:
+    return {
+      loading: false,
+      error: '',
+      exchange: action.payload.data.quotes.USDKRW,
     };
   case `${FETCH_NEWS}_REJECTED`:
     return {

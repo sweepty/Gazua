@@ -7,8 +7,9 @@ export const FETCH_COIN = 'FETCH_COIN';
 export const FETCH_DETAIL = 'FETCH_DETAIL';
 export const GET_INFO = 'GET_INFO';
 export const FETCH_NEWS = 'FETCH_NEWS';
-export const CONVERSE_COIN = 'CONVERSE_COIN';
 export const GET_NOW = 'GET_NOW';
+export const EXCHANGE = 'EXCHANGE';
+
 
 export function fetchCoin(){
   const url = `${SECOND_URL}top-coins/20`;
@@ -37,8 +38,8 @@ export function getInfo(coinName) {
   };
   
 }
-export function getNow(coinName, market){
-  const url = `${ROOT_URL}price?fsym=${coinName}&tsyms=${market}`;
+export function getNow(){
+  const url = `${ROOT_URL}pricemulti?fsyms=BTC,ETH,XRP,BCH,EOS,LTC,ADA,XLM,MIOTA,TRX,NEO,DASH,XMR,XEM,VEN,ETC,USDT,QTUM,OMG,ICX&tsyms=USD,KRW`;
   const request = axios.get(url);
   return {
     type: GET_NOW,
@@ -54,3 +55,13 @@ export function fetchNews(){
     payload: request
   };
 }
+
+export function exchanger(){
+  const url = 'http://www.apilayer.net/api/live?access_key=17a14daf73c18d632306d493b150b765';
+  const request = axios.get(url);
+  return {
+    type: EXCHANGE,
+    payload: request
+  };
+}
+

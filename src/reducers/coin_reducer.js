@@ -1,12 +1,13 @@
-import { FETCH_COIN, GET_INFO, GET_NOW } from '../actions';
+import { FETCH_COIN, GET_INFO} from '../actions';
 
 export default function(state = {
   loading: false,
   error: '',
   data: [],
   info: [],
-  detail: [], 
-  price:''
+  krw: [],
+  price: [],
+  
 },action) {
     
   switch(action.type){
@@ -28,12 +29,6 @@ export default function(state = {
       loading: false,
       error: '',
       info: action.payload.data.Data[0].CoinInfo,
-    };
-  case `${GET_NOW}_FULFILLED`:
-    return{
-      loading: false,
-      error: '',
-      price: action.payload
     };
   case `${FETCH_COIN}_REJECTED`:
     return {

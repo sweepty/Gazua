@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {XAxis,YAxis,VerticalGridLines,AreaSeries,XYPlot, HorizontalGridLines} from 'react-vis';
-
 import 'react-vis/dist/style.css';
+
 export default class Chart extends Component {
   render(){
     const priceData = this.props.value;
