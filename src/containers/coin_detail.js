@@ -20,6 +20,7 @@ class CoinDetail extends React.Component {
     this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit);
     this.props.getInfo(this.props.match.params.symbol);
     this.timer = setInterval(()=> 
+    
       this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit), 6000)
       
   }
@@ -94,7 +95,7 @@ class CoinDetail extends React.Component {
             </div> 
           </div>
           <div className="col-lg-6 col-sm-6 col-md-6">
-            <h4>Set Limit</h4>
+            <h4>Set Numbers</h4>
             <h2 className="setview">{this.state.limit}</h2>
             <div className="btn-group limit" role="group" aria-label="Choice limit">
               <button type="button" id ="7" className="btn btn-secondary" onClick={this.setLimit}>7</button>

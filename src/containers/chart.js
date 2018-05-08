@@ -9,7 +9,7 @@ export default class Chart extends Component {
       
       <XYPlot
         xType="time"
-        width={800}
+        width={700}
         height={500}
         onMouseLeave={this.onMouseLeave}>
         <HorizontalGridLines />

@@ -82,7 +82,7 @@ tr td {
 }
 .chart {
   margin: auto;
-  width: 100%;
+  /* width: 50%; */
 }
 .CustomBtn {
   margin: auto;
@@ -101,9 +101,12 @@ h1 {
 table {
   margin: auto;
   width: 50%;
-  /* padding: 1.5em; */
 }
 #coin-info {
+  margin: auto;
+  width: 50%;
+}
+#coin-info2 {
   margin: auto;
   width: 50%;
 }
