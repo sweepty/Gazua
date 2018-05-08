@@ -36,7 +36,9 @@ class KimP extends Component {
                         <td>{index}</td>
                         <td>${item.USD}</td>
                         <td>₩{item.KRW}</td>
-                        <td className={ item.KRW - (item.USD*this.props.exchange) < 0 ? 'red':'blue' } >{((item.KRW - (item.USD*this.props.exchange))/ parseInt(item.USD*this.props.exchange)*100).toFixed(2)}%</td>
+                        <td className={ item.KRW - (item.USD*this.props.exchange) < 0 ? 'red':'blue' } >
+                          {((item.KRW - (item.USD*this.props.exchange))/ parseInt(item.USD*this.props.exchange)*100).toFixed(2)}%
+                        </td>
                       </tr>
                     ))}
                   </tbody>
