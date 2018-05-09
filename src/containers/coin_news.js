@@ -14,7 +14,7 @@ class CoinNews extends Component {
     
   }
   componentDidMount(){
-    this.props.fetchNews();
+    // this.props.fetchNews();
     this.timer = setInterval(()=> 
       this.props.fetchNews(), 20000);
     
@@ -25,9 +25,9 @@ class CoinNews extends Component {
       <div className="container">
         <div className="row">
           {_.map(this.props.news, item =>
-            <div className="col-4">
+            <div className="col-4" key={item.id}>
               <div className="card"> 
-                <img className="card-img-top" src={item.imageurl} alt="news image"/>
+                <img className="card-img-top" src={item.imageurl} alt="news main"/>
                 <div className="card-body" >
                   <h4 className="card-title">{item.title}</h4>
                   {/* <p className="card-text">{item.body.substr(0,100)}...</p> */}

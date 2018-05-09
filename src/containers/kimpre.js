@@ -6,9 +6,10 @@ import _ from 'lodash';
 
 class KimP extends Component {
   componentDidMount(){
-    this.props.getNow();
-    this.props.exchanger();
-
+    // this.props.getNow();
+    // this.props.exchanger();
+    this.timer = setInterval(()=> this.props.getNow(), 1000);
+    this.timer = setInterval(()=> this.props.exchanger(),1000);
   }
   render(){
     return(
@@ -37,7 +38,7 @@ class KimP extends Component {
                         <td>${item.USD}</td>
                         <td>₩{item.KRW}</td>
                         <td className={ item.KRW - (item.USD*this.props.exchange) < 0 ? 'red':'blue' } >
-                          {((item.KRW - (item.USD*this.props.exchange))/ parseInt(item.USD*this.props.exchange)*100).toFixed(2)}%
+                          {((item.KRW - (item.USD*this.props.exchange))/ parseInt(item.USD*this.props.exchange,10)*100).toFixed(2)}%
                         </td>
                       </tr>
                     ))}

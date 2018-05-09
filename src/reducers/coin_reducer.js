@@ -5,8 +5,8 @@ export default function(state = {
   error: '',
   data: [],
   info: [],
-  krw: [],
-  price: [],
+  // krw: [],
+  // price: [],
   
 },action) {
     
@@ -15,7 +15,7 @@ export default function(state = {
     return {
       loading: true,
       error: '',
-      data: [...state.data],
+      data: [],
     };
   case `${FETCH_COIN}_FULFILLED`: {
     return {

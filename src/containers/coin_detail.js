@@ -17,11 +17,10 @@ class CoinDetail extends React.Component {
     };
   }
   componentDidMount(){
-    this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit);
+    // this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit);
     this.props.getInfo(this.props.match.params.symbol);
     this.timer = setInterval(()=> 
-    
-      this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit), 6000)
+      this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit), 1000)
       
   }
   setPriod = (e) => {
@@ -47,6 +46,8 @@ class CoinDetail extends React.Component {
         case 'KRW':
           this.setState({mark: '₩'});
           break;
+        default:
+          return ''
       }
       this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit);
     });
@@ -74,7 +75,7 @@ class CoinDetail extends React.Component {
 
       <div className="coin-detail">
         <div className="coin-name-and-logo">
-          <img className="coin-detail-logo" src={`https://chasing-coins.com/api/v1/std/logo/${symbol}`}/>
+          <img className="coin-detail-logo" alt="coin logo"src={`https://chasing-coins.com/api/v1/std/logo/${symbol}`}/>
           <h2>{symbol} - {this.props.info.FullName} </h2>
         </div>
         <div className="container-fluid CustomBtn">

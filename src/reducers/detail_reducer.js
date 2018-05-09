@@ -1,9 +1,9 @@
-import { FETCH_DETAIL, GET_NOW, EXCHANGE  } from '../actions';
+import { FETCH_DETAIL, GET_NOW  } from '../actions';
 
 export default function(state = {
   loading: false,
   error: '',
-  detail: [],
+  detail:[],
   now:[],
 },action) {
   
@@ -33,7 +33,7 @@ export default function(state = {
       detail: [...state.detail]
     };
     
-  default :
+  default:
     return state;
   }
 }

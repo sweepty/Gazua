@@ -10,7 +10,6 @@ export const FETCH_NEWS = 'FETCH_NEWS';
 export const GET_NOW = 'GET_NOW';
 export const EXCHANGE = 'EXCHANGE';
 
-
 export function fetchCoin(){
   const url = `${SECOND_URL}top-coins/20`;
   const request = axios.get(url);

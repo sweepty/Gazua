@@ -58,7 +58,7 @@ class CoinList extends Component {
                   {_.map(this.props.coin, (item,index) => (
                     <tr key={index}>
                       <td>{index}</td>
-                      <td><img className="coin-logo" src={`https://chasing-coins.com/api/v1/std/logo/${item.symbol}`}/></td>
+                      <td><img className="coin-logo" alt="coin logo" src={`https://chasing-coins.com/api/v1/std/logo/${item.symbol}`}/></td>
                       <td>{item.symbol}</td>
                       <td>${item.price}</td>
                       <td>${item.cap}</td>
