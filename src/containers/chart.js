@@ -21,7 +21,8 @@ export default class Chart extends Component {
           onNearestX={this.onNearestX}
           data={priceData}
           opacity={0.80} 
-          stroke="#12939a" animation="gentle"
+          stroke="#12939a" 
+          // animation="gentle"
         />
       </XYPlot>
     );

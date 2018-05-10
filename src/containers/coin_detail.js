@@ -14,14 +14,16 @@ class CoinDetail extends React.Component {
       limit: 30,
       market: 'USD',
       mark: '$',
+      coindetailinfo: [],
     };
   }
   componentDidMount(){
-    // this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit);
     this.props.getInfo(this.props.match.params.symbol);
     this.timer = setInterval(()=> 
-      this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit), 1000)
-      
+      this.props.fetchDetail(this.props.match.params.symbol, this.state.market, this.state.priod, this.state.limit), 2000);
+  }
+  componentWillUnmount(){
+    // this.clearInterval(this.timer);
   }
   setPriod = (e) => {
     this.setState({ priod: e.target.id },() => {
@@ -67,10 +69,12 @@ class CoinDetail extends React.Component {
       });
       return dd;
     });
-    if(!this.props.detail || !this.props.info){
-      return null;
-    }
 
+    if(!this.props.info){
+      console.log('info가 없어졌음ㅠ');
+      return '';
+    }
+    
     return (
 
       <div className="coin-detail">
@@ -199,7 +203,7 @@ function mapStateToProps(state){
     detail: state.details.detail,
     error: state.coin.error,
     info: state.coin.info,
-    now: state.details.now,
+    // now: state.details.now,
   };
 }
 

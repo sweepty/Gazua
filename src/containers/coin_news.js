@@ -16,7 +16,7 @@ class CoinNews extends Component {
   componentDidMount(){
     // this.props.fetchNews();
     this.timer = setInterval(()=> 
-      this.props.fetchNews(), 20000);
+      this.props.fetchNews(), 1000);
     
   }
   
