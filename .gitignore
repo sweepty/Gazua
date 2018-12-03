@@ -42,3 +42,6 @@ chrome-user-data
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# node modules
+./node_modules
