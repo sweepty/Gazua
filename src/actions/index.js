@@ -1,7 +1,5 @@
 import axios from 'axios';
-
-const ROOT_URL = 'https://min-api.cryptocompare.com/data/';
-const SECOND_URL = 'https://chasing-coins.com/api/v1/';
+import { ROOT_URL, SECOND_URL, EXCHANGE_RATE_URL } from '../API/base-URL';
 
 export const FETCH_COIN = 'FETCH_COIN';
 export const FETCH_DETAIL = 'FETCH_DETAIL';
@@ -56,7 +54,7 @@ export function fetchNews(){
 }
 
 export function exchanger(){
-  const url = 'http://www.apilayer.net/api/live?access_key=17a14daf73c18d632306d493b150b765';
+  const url = EXCHANGE_RATE_URL;
   const request = axios.get(url);
   return {
     type: EXCHANGE,
