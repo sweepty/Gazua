@@ -12,10 +12,10 @@ class App extends Component {
       <div className="App">
         <NavBar/>
         <Switch>
-          <Route exact path="/gazua" component={CoinList}/>
-          <Route path="/gazua/news" component={CoinNews}/>
-          <Route path="/gazua/kimchipremium" component={KimP}/>
-          <Route path="/gazua/:symbol" component={CoinDetail}/>
+          <Route exact path="/home" component={CoinList}/>
+          <Route path="/news" component={CoinNews}/>
+          <Route path="/kimchipremium" component={KimP}/>
+          <Route exact path="/:symbol" component={CoinDetail}/>
         </Switch>
       </div>
     );
