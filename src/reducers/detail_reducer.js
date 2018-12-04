@@ -8,12 +8,12 @@ export default function(state = {
 },action) {
   
   switch(action.type){
-  case `${FETCH_DETAIL}_PENDING`:
-    return {
-      loading: true,
-      error: '',
-      detail: [...state.detail]
-    };
+  // case `${FETCH_DETAIL}_PENDING`:
+  //   return {
+  //     loading: true,
+  //     error: '',
+  //     detail: [...state.detail]
+  //   };
   case `${FETCH_DETAIL}_FULFILLED`:
     return {
       loading: false,
@@ -26,12 +26,12 @@ export default function(state = {
       error: '',
       now: action.payload.data,
     };
-  case `${FETCH_DETAIL}_REJECTED`:
-    return {
-      loading: false,
-      error: action.payload,
-      detail: [...state.detail]
-    };
+  // case `${FETCH_DETAIL}_REJECTED`:
+  //   return {
+  //     loading: false,
+  //     error: action.payload,
+  //     detail: [...state.detail]
+  //   };
     
   default:
     return state;
