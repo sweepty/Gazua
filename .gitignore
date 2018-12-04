@@ -45,3 +45,6 @@ yarn-error.log*
 
 # node modules
 ./node_modules
+
+# api key
+./src/API/api-key
