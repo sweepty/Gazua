@@ -6,16 +6,22 @@
 
 - Javascript
 
+
+
 ### Framework
 
 - [Redux](https://github.com/reactjs/redux)
 - [React-redux](https://github.com/reactjs/react-redux)
 - [Bootstrap](https://getbootstrap.com/) 
 
+
+
 ### Library
 
 - [React](https://github.com/facebook/react)
 - [React-vis](https://github.com/uber/react-vis)
+
+
 
 ### API
 
@@ -25,21 +31,24 @@ Cryptocompare API : <https://www.cryptocompare.com/api/>
 
 Chasing-coins API: https://chasing-coins.com/api
 
+
+
 ### 환율
 
 Currencylayer API: https://currencylayer.com/documentation
 
-### 구성
 
-#### 기본 요구 사항
+
+### 구성
 
 1. 코인 리스트 페이지: 코인들의 간단한 정보와 현재 가격
 2. 코인 상세 페이지: 코인의 상세 정보와 가격에 대한 상세 정보
 
-#### 추가
+3. 코인 뉴스 페이지
 
-1. 코인 뉴스 페이지
-2. 김치프리미엄 페이지
+4. 김치프리미엄 페이지
+
+
 
 ### Error?
 
@@ -57,29 +66,35 @@ https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeac
 
 <br/>
 
-### Gazua?
+### Screenshots
 
 #### 코인 리스트 페이지
 
-![스크린샷 2018-05-08 오전 2.45.27](/Users/seungyeonlee/Desktop/스크린샷 2018-05-08 오전 2.45.27.png)
+![coin list](https://user-images.githubusercontent.com/29784606/48313608-7611c800-e602-11e8-875c-3c880fd5e780.png)
+
+
 
 <br/>
 
 #### 코인 상세 페이지
 
-![스크린샷 2018-05-08 오전 2.45.55](/Users/seungyeonlee/Desktop/스크린샷 2018-05-08 오전 2.45.55.png)
+![coin detail](https://user-images.githubusercontent.com/29784606/48313675-19fb7380-e603-11e8-83db-88853657342e.png)
 
-![스크린샷 2018-05-08 오전 2.46.16](/Users/seungyeonlee/Desktop/스크린샷 2018-05-08 오전 2.46.16.png)
+
 
 <br/>
 
 #### 코인 뉴스 페이지
 
-![스크린샷 2018-05-08 오전 2.46.43](/Users/seungyeonlee/Desktop/스크린샷 2018-05-08 오전 2.46.43.png)
+![news](https://user-images.githubusercontent.com/29784606/48313710-9d1cc980-e603-11e8-9606-579151fb9fc6.png)
+
+
 
 <br/>
 
 #### 김치프리미엄 페이지
 
-![스크린샷 2018-05-08 오전 2.46.54](/Users/seungyeonlee/Desktop/스크린샷 2018-05-08 오전 2.46.54.png)
+![kimchi premium](https://user-images.githubusercontent.com/29784606/48313654-0c45ee00-e603-11e8-9394-1d3bb2aa8199.png)
+
+
 
